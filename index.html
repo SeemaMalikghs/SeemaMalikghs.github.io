@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seema Malik – Dedicated Teacher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & ROOT ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2e4a;
+      --blue:   #2a6496;
+      --sky:    #4a9eca;
+      --mint:   #e8f4f8;
+      --cream:  #fafbfc;
+      --white:  #ffffff;
+      --gray:   #6b7a8d;
+      --light:  #dce8f0;
+      --accent: #c8a96e;
+      --text:   #2c3e50;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--mint); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(42,100,150,0.12);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(26,46,74,0.10); }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--sky); }
+
+    .nav-links {
+      display: flex; gap: 2.2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0; height: 2px;
+      background: var(--sky);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--navy); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 5% 4rem;
+      background: linear-gradient(135deg, var(--navy) 0%, #2a5280 50%, var(--blue) 100%);
+      position: relative; overflow: hidden;
+    }
+
+    /* decorative circles */
+    #home::before, #home::after {
+      content: ''; position: absolute; border-radius: 50%;
+      opacity: 0.06;
+    }
+    #home::before {
+      width: 600px; height: 600px;
+      background: var(--white);
+      top: -150px; right: -100px;
+    }
+    #home::after {
+      width: 400px; height: 400px;
+      background: var(--accent);
+      bottom: -120px; left: -80px;
+    }
+
+    .hero-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 4rem; width: 100%; max-width: 1200px; margin: auto;
+      position: relative; z-index: 1;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(200,169,110,0.3);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--sky);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 520px;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .hero-cta {
+      display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.25s;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--navy);
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background: transparent; color: var(--accent);
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,169,110,0.3);
+    }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* hero avatar */
+    .hero-avatar {
+      flex-shrink: 0;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .avatar-ring {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .avatar-ring::before {
+      content: '';
+      position: absolute; inset: -12px;
+      border-radius: 50%;
+      border: 2px dashed rgba(200,169,110,0.4);
+      animation: rotateSlow 20s linear infinite;
+    }
+    .avatar-inner {
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+    }
+    .avatar-icon { font-size: 4rem; }
+    .avatar-school {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.08em;
+      text-align: center; padding: 0 1rem;
+    }
+
+    /* floating stats */
+    .hero-stats {
+      display: flex; gap: 1.5rem; margin-top: 2.5rem;
+      animation: fadeUp 1s 0.5s ease both;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.15); }
+
+    /* ===== SECTIONS SHARED ===== */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+    .section-line {
+      width: 56px; height: 3px;
+      background: linear-gradient(90deg, var(--sky), var(--accent));
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+    .section-desc {
+      font-size: 1.05rem; color: var(--gray);
+      line-height: 1.8; max-width: 580px;
+    }
+
+    .container { max-width: 1200px; margin: auto; }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: start; margin-top: 3rem;
+    }
+    .about-card {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      color: white;
+      position: relative; overflow: hidden;
+    }
+    .about-card::after {
+      content: '📚';
+      position: absolute; bottom: -10px; right: 20px;
+      font-size: 8rem; opacity: 0.08;
+    }
+    .about-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .about-card-text { font-size: 0.95rem; line-height: 1.9; opacity: 0.85; }
+
+    .philosophy-box {
+      background: var(--mint); border-radius: 16px;
+      padding: 2rem; margin-top: 1.5rem;
+      border-left: 4px solid var(--sky);
+    }
+    .philosophy-box p {
+      font-style: italic; font-size: 0.95rem;
+      color: var(--navy); line-height: 1.8;
+    }
+
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .skill-pill {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--mint); border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      transition: all 0.25s;
+    }
+    .skill-pill:hover {
+      background: var(--blue); color: white;
+      transform: translateX(4px);
+    }
+    .skill-pill:hover .skill-icon { filter: grayscale(0) brightness(2); }
+    .skill-icon { font-size: 1.3rem; }
+    .skill-name { font-size: 0.88rem; font-weight: 500; }
+
+    /* ===== EDUCATION & EXPERIENCE ===== */
+    #experience { background: var(--cream); }
+    .exp-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      margin-top: 3rem;
+    }
+    .exp-col-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--navy);
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 16px; top: 0; bottom: 0;
+      width: 2px; background: var(--light);
+    }
+
+    .tl-item {
+      display: flex; gap: 1.5rem;
+      margin-bottom: 2rem; position: relative;
+    }
+    .tl-dot {
+      flex-shrink: 0;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--sky);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; z-index: 1;
+      position: relative;
+    }
+    .tl-dot.current { background: var(--sky); border-color: var(--navy); }
+    .tl-dot.current::after {
+      content: '';
+      position: absolute; inset: -5px;
+      border-radius: 50%; border: 2px solid rgba(74,158,202,0.3);
+      animation: pulse 2s infinite;
+    }
+
+    .tl-body {
+      background: var(--white); border-radius: 14px;
+      padding: 1.2rem 1.4rem; flex: 1;
+      border: 1px solid var(--light);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .tl-body:hover {
+      box-shadow: 0 8px 32px rgba(42,100,150,0.1);
+      transform: translateY(-2px);
+    }
+    .tl-year {
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--sky); letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .tl-title {
+      font-weight: 600; color: var(--navy);
+      margin: 0.25rem 0;
+    }
+    .tl-sub { font-size: 0.88rem; color: var(--gray); }
+    .tl-badge {
+      display: inline-block; margin-top: 0.5rem;
+      background: var(--mint); color: var(--blue);
+      font-size: 0.7rem; font-weight: 600;
+      padding: 0.2rem 0.7rem; border-radius: 50px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== SKILLS BARS ===== */
+    #skills { background: var(--white); }
+    .skills-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      margin-top: 3rem; align-items: start;
+    }
+    .skill-bar-item { margin-bottom: 1.6rem; }
+    .skill-bar-header {
+      display: flex; justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .skill-bar-name { font-size: 0.92rem; font-weight: 500; color: var(--navy); }
+    .skill-bar-pct { font-size: 0.85rem; color: var(--sky); font-weight: 600; }
+    .skill-bar-track {
+      height: 8px; background: var(--mint); border-radius: 50px; overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%; border-radius: 50px;
+      background: linear-gradient(90deg, var(--sky), var(--navy));
+      width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+
+    .skill-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .skill-card {
+      background: var(--mint); border-radius: 16px;
+      padding: 1.5rem; text-align: center;
+      transition: all 0.3s; cursor: default;
+    }
+    .skill-card:hover {
+      background: var(--navy); color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,46,74,0.15);
+    }
+    .skill-card:hover .sc-title { color: white; }
+    .skill-card:hover .sc-desc { color: rgba(255,255,255,0.7); }
+    .sc-icon { font-size: 2rem; margin-bottom: 0.7rem; }
+    .sc-title { font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .sc-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+    /* ===== ACHIEVEMENTS ===== */
+    #achievements { background: var(--cream); }
+    .ach-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem;
+      margin-top: 3rem;
+    }
+    .ach-card {
+      background: var(--white); border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid var(--light);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .ach-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--sky), var(--accent));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .ach-card:hover { box-shadow: 0 16px 40px rgba(42,100,150,0.12); transform: translateY(-4px); }
+    .ach-card:hover::before { transform: scaleX(1); }
+    .ach-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .ach-title { font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+    .ach-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+    .ach-tag {
+      display: inline-block; margin-top: 1rem;
+      background: var(--mint); color: var(--blue);
+      font-size: 0.7rem; font-weight: 600;
+      padding: 0.25rem 0.8rem; border-radius: 50px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: linear-gradient(135deg, var(--navy) 0%, #1d3a5c 100%);
+    }
+    #contact .section-title { color: white; }
+    #contact .section-label { color: var(--accent); }
+    #contact .section-desc { color: rgba(255,255,255,0.65); }
+
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem;
+      margin-top: 3rem; align-items: start;
+    }
+
+    .contact-info-item {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .ci-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .ci-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; }
+    .ci-value { font-size: 0.95rem; color: white; font-weight: 500; margin-top: 0.1rem; }
+
+    /* form */
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.78rem; font-weight: 600;
+      color: rgba(255,255,255,0.6); letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: white; font-size: 0.92rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      resize: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--sky);
+      background: rgba(255,255,255,0.11);
+    }
+    .form-group.error input,
+    .form-group.error textarea { border-color: #e06c6c; }
+    .error-msg {
+      font-size: 0.75rem; color: #e06c6c;
+      display: none;
+    }
+    .form-group.error .error-msg { display: block; }
+
+    .form-submit {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .btn-submit {
+      background: var(--accent); color: var(--navy);
+      border: none; padding: 0.9rem 2.2rem;
+      border-radius: 50px; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; transition: all 0.25s;
+      font-family: inherit;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .success-msg {
+      display: none; background: rgba(74,158,202,0.15);
+      border: 1px solid rgba(74,158,202,0.3);
+      border-radius: 12px; padding: 1rem 1.4rem;
+      color: var(--sky); font-size: 0.92rem;
+    }
+    .success-msg.show { display: block; animation: fadeUp 0.4s ease; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0f1e30;
+      padding: 2rem 5%;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+    footer span { color: var(--accent); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.3); opacity: 0.1; }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-cta { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-avatar { order: -1; }
+      .about-grid, .exp-layout, .skills-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .ach-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 1rem 4%; }
+      .nav-links { display: none; flex-direction: column; gap: 0; }
+      .nav-links.open {
+        display: flex;
+        position: fixed; top: 64px; left: 0; right: 0;
+        background: white; padding: 1rem 0;
+        border-bottom: 1px solid var(--light);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .nav-links.open li a { display: block; padding: 0.8rem 2rem; }
+      .hamburger { display: flex; }
+      .ach-grid { grid-template-columns: 1fr; }
+      .skill-cards { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .avatar-ring { width: 200px; height: 200px; }
+      .avatar-inner { width: 170px; height: 170px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Seema <span>Malik</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">✦ Educator &amp; Mentor</div>
+      <h1 class="hero-name">Seema Malik</h1>
+      <p class="hero-title">Dedicated Teacher</p>
+      <p class="hero-intro">
+        Passionate about igniting curiosity and nurturing potential in every student.
+        With a heartfelt commitment to education, I strive to make learning a joyful,
+        transformative journey for each young mind I have the privilege to guide.
+      </p>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">Discover My Story</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Teaching</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Students</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Workshops</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <div class="avatar-icon">👩‍🏫</div>
+          <div class="avatar-school">GHS Chak Bakhtu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label reveal">About Me</div>
+    <h2 class="section-title reveal">Shaping Futures,<br>One Lesson at a Time</h2>
+    <div class="section-line reveal"></div>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-card">
+          <div class="about-card-title">My Teaching Journey</div>
+          <div class="about-card-text">
+            With over a decade of dedicated service in education, I have had the privilege of
+            guiding hundreds of students through their academic journeys. My teaching approach
+            blends traditional values with modern, innovative techniques to create an engaging
+            classroom environment where every student feels seen, heard, and inspired.
+            <br><br>
+            Currently serving at Government High School Chak Bakhtu, I bring enthusiasm and
+            dedication to every single class, ensuring that learning is never a burden — but
+            always an adventure.
+          </div>
+        </div>
+        <div class="philosophy-box" style="margin-top:1.5rem;">
+          <p>"Every child carries a unique spark. My role is not to fill a bucket, but to light a fire — and fan it with patience, empathy, and unwavering belief in their potential."</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-desc" style="margin-bottom:1.8rem;">
+          I believe that effective teaching blends empathy with structure, creativity with
+          discipline, and passion with patience. Here are the core competencies I bring
+          to my classroom every day:
+        </p>
+        <div class="skills-grid">
+          <div class="skill-pill">
+            <span class="skill-icon">🗣️</span>
+            <span class="skill-name">Communication</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">🏫</span>
+            <span class="skill-name">Classroom Mgmt</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">📝</span>
+            <span class="skill-name">Lesson Planning</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">🌱</span>
+            <span class="skill-name">Student Mentoring</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">💻</span>
+            <span class="skill-name">Ed. Technology</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">🤝</span>
+            <span class="skill-name">Student Engagement</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">📊</span>
+            <span class="skill-name">Assessment</span>
+          </div>
+          <div class="skill-pill">
+            <span class="skill-icon">❤️</span>
+            <span class="skill-name">Inclusive Teaching</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">Education &amp; Experience</div>
+    <h2 class="section-title reveal">My Academic &amp;<br>Professional Path</h2>
+    <div class="section-line reveal"></div>
+    <div class="exp-layout">
+      <div class="reveal">
+        <div class="exp-col-title">🎓 Education</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot">🎓</div>
+            <div class="tl-body">
+              <div class="tl-year">2008 – 2010</div>
+              <div class="tl-title">Master of Arts (M.A.)</div>
+              <div class="tl-sub">University of Punjab, Lahore</div>
+              <div class="tl-badge">Postgraduate</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">📘</div>
+            <div class="tl-body">
+              <div class="tl-year">2006 – 2008</div>
+              <div class="tl-title">Bachelor of Education (B.Ed.)</div>
+              <div class="tl-sub">Allama Iqbal Open University</div>
+              <div class="tl-badge">Professional</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">📗</div>
+            <div class="tl-body">
+              <div class="tl-year">2003 – 2005</div>
+              <div class="tl-title">Bachelor of Arts (B.A.)</div>
+              <div class="tl-sub">Government College, Hoshiarpur</div>
+              <div class="tl-badge">Undergraduate</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">📙</div>
+            <div class="tl-body">
+              <div class="tl-year">2001 – 2003</div>
+              <div class="tl-title">F.A. (Intermediate)</div>
+              <div class="tl-sub">Board of Intermediate Education</div>
+              <div class="tl-badge">Secondary</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="exp-col-title">💼 Experience</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot current">⭐</div>
+            <div class="tl-body">
+              <div class="tl-year">2018 – Present</div>
+              <div class="tl-title">Senior Subject Teacher</div>
+              <div class="tl-sub">GHS Chak Bakhtu, Punjab</div>
+              <div class="tl-badge">Current Position</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">🏫</div>
+            <div class="tl-body">
+              <div class="tl-year">2014 – 2018</div>
+              <div class="tl-title">Subject Teacher</div>
+              <div class="tl-sub">Government Girls High School, Jaranwala</div>
+              <div class="tl-badge">4 Years</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">📋</div>
+            <div class="tl-body">
+              <div class="tl-year">2011 – 2014</div>
+              <div class="tl-title">Junior Teacher</div>
+              <div class="tl-sub">Government Middle School, Chuharkana</div>
+              <div class="tl-badge">3 Years</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">🌟</div>
+            <div class="tl-body">
+              <div class="tl-year">2010 – 2011</div>
+              <div class="tl-title">Contract Teacher</div>
+              <div class="tl-sub">Private School, Lahore</div>
+              <div class="tl-badge">Beginner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">Core Skills</div>
+    <h2 class="section-title reveal">Teaching Expertise &amp;<br>Competencies</h2>
+    <div class="section-line reveal"></div>
+    <div class="skills-layout">
+      <div class="reveal">
+        <div class="skill-bar-item">
+          <div class="skill-bar-header">
+            <span class="skill-bar-name">Communication</span>
+            <span class="skill-bar-pct">95%</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header">
+            <span class="skill-bar-name">Classroom Management</span>
+            <span class="skill-bar-pct">92%</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header">
+            <span class="skill-bar-name">Lesson Planning</span>
+            <span class="skill-bar-pct">90%</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header">
+            <span class="skill-bar-name">Student Mentoring</span>
+            <span class="skill-bar-pct">88%</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header">
+            <span class="skill-bar-name">Educational Technology</span>
+            <span class="skill-bar-pct">80%</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header">
+            <span class="skill-bar-name">Student Engagement</span>
+            <span class="skill-bar-pct">93%</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="93"></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-cards">
+          <div class="skill-card">
+            <div class="sc-icon">🗣️</div>
+            <div class="sc-title">Communication</div>
+            <div class="sc-desc">Clear, empathetic, and effective two-way communication with students and parents</div>
+          </div>
+          <div class="skill-card">
+            <div class="sc-icon">🏫</div>
+            <div class="sc-title">Classroom Mgmt</div>
+            <div class="sc-desc">Creating a structured, positive, and productive learning environment</div>
+          </div>
+          <div class="skill-card">
+            <div class="sc-icon">📝</div>
+            <div class="sc-title">Lesson Planning</div>
+            <div class="sc-desc">Designing curriculum-aligned, engaging, and differentiated lesson plans</div>
+          </div>
+          <div class="skill-card">
+            <div class="sc-icon">🌱</div>
+            <div class="sc-title">Mentoring</div>
+            <div class="sc-desc">Guiding students personally and academically toward their full potential</div>
+          </div>
+          <div class="skill-card">
+            <div class="sc-icon">💻</div>
+            <div class="sc-title">Ed. Technology</div>
+            <div class="sc-desc">Integrating digital tools to enhance the modern classroom experience</div>
+          </div>
+          <div class="skill-card">
+            <div class="sc-icon">🤝</div>
+            <div class="sc-title">Engagement</div>
+            <div class="sc-desc">Making lessons interactive, relevant, and deeply engaging for all learners</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-label reveal">Achievements &amp; Activities</div>
+    <h2 class="section-title reveal">Milestones &amp;<br>Proud Moments</h2>
+    <div class="section-line reveal"></div>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">Best Teacher Award</div>
+        <div class="ach-desc">Recognized as Best Teacher of the Year at District Level for outstanding contribution to student achievement and school development.</div>
+        <div class="ach-tag">2022</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">📚</div>
+        <div class="ach-title">Literacy Campaign Lead</div>
+        <div class="ach-desc">Led a school-wide literacy campaign, improving reading fluency among 100+ students within a single academic year.</div>
+        <div class="ach-tag">Activity</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-title">Professional Development</div>
+        <div class="ach-desc">Completed 20+ certified workshops on modern pedagogy, inclusive education, and technology-integrated teaching methods.</div>
+        <div class="ach-tag">Workshops</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🌟</div>
+        <div class="ach-title">Student Success Stories</div>
+        <div class="ach-desc">Mentored students who achieved top positions in district board exams, with three students scoring in the top 10 of the province.</div>
+        <div class="ach-tag">Student Achievement</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🎨</div>
+        <div class="ach-title">Science & Arts Festival</div>
+        <div class="ach-desc">Organized annual Science and Arts Festivals at GHS Chak Bakhtu, providing students a platform to showcase their creative talents.</div>
+        <div class="ach-tag">School Activity</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🤝</div>
+        <div class="ach-title">Community Outreach</div>
+        <div class="ach-desc">Participated in Punjab Education Department's parent engagement initiative, bridging the gap between school and community for better student outcomes.</div>
+        <div class="ach-tag">Community</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's Connect &amp;<br>Collaborate</h2>
+    <div class="section-line reveal"></div>
+    <div class="contact-layout">
+      <div class="reveal">
+        <p class="section-desc">
+          Whether you're a parent, fellow educator, or someone passionate about education —
+          I'd love to hear from you. Feel free to reach out!
+        </p>
+        <br>
+        <div class="contact-info-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-value">GHS Chak Bakhtu, Punjab, Pakistan</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">🏫</div>
+          <div>
+            <div class="ci-label">School</div>
+            <div class="ci-value">Government High School Chak Bakhtu</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">seemamalik@education.gov.pk</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value">+92 300 0000000</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group" id="nameGroup">
+              <label for="nameField">Full Name</label>
+              <input type="text" id="nameField" placeholder="Your name" />
+              <span class="error-msg">Please enter your name.</span>
+            </div>
+            <div class="form-group" id="emailGroup">
+              <label for="emailField">Email Address</label>
+              <input type="email" id="emailField" placeholder="your@email.com" />
+              <span class="error-msg">Please enter a valid email.</span>
+            </div>
+          </div>
+          <div class="form-group" id="subjectGroup">
+            <label for="subjectField">Subject</label>
+            <input type="text" id="subjectField" placeholder="What's this about?" />
+            <span class="error-msg">Please enter a subject.</span>
+          </div>
+          <div class="form-group" id="msgGroup">
+            <label for="msgField">Message</label>
+            <textarea id="msgField" rows="5" placeholder="Write your message here..."></textarea>
+            <span class="error-msg">Please enter a message.</span>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-submit">Send Message ✉️</button>
+          </div>
+          <div class="success-msg" id="successMsg">
+            ✅ Thank you! Your message has been sent. I'll respond as soon as possible.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 <span>Seema Malik</span> · Dedicated Teacher · GHS Chak Bakhtu · Made with ❤️ for Education</p>
+</footer>
+
+<script>
+  // ===== NAV SCROLL EFFECT =====
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ===== HAMBURGER MENU =====
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // ===== ACTIVE NAV LINK =====
+  const sections = document.querySelectorAll('section');
+  const navAs    = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navAs.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--navy)' : '';
+    });
+  });
+
+  // ===== REVEAL ON SCROLL =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== SKILL BARS =====
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-bar-fill').forEach(fill => {
+          fill.style.width = fill.dataset.width + '%';
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skills-layout').forEach(el => barObserver.observe(el));
+
+  // ===== CONTACT FORM VALIDATION =====
+  const form = document.getElementById('contactForm');
+  function validate(id, groupId, check) {
+    const val = document.getElementById(id).value.trim();
+    const grp = document.getElementById(groupId);
+    const ok = check(val);
+    grp.classList.toggle('error', !ok);
+    return ok;
+  }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = validate('nameField',    'nameGroup',    v => v.length >= 2);
+    const em= validate('emailField',   'emailGroup',   v => emailRe.test(v));
+    const s = validate('subjectField', 'subjectGroup', v => v.length >= 3);
+    const m = validate('msgField',     'msgGroup',     v => v.length >= 10);
+
+    if (n && em && s && m) {
+      form.querySelectorAll('input, textarea').forEach(f => f.value = '');
+      document.getElementById('successMsg').classList.add('show');
+      setTimeout(() => document.getElementById('successMsg').classList.remove('show'), 5000);
+    }
+  });
+
+  // clear errors on input
+  ['nameField','emailField','subjectField','msgField'].forEach((id, i) => {
+    const groups = ['nameGroup','emailGroup','subjectGroup','msgGroup'];
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById(groups[i]).classList.remove('error');
+    });
+  });
+</script>
+</body>
+</html>
